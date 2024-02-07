@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+
+{% block content %}
+
+
+<div class="atlasgrid_monitor">
+
+    <h1 style="font-family: 'Protest Strike', sans-serif;">
+        Monitor List
+    </h1>
+    <form action="/atlasgrid/monitor/" method="post">
+        {% csrf_token %}
+        <div>
+            <input type="text" name="monitor_input"/>
+        </div>
+        <input type="submit" class="btn btn-primary" value="POST">
+    </form>
+
+    {% if monitor_output %}
+
+    <h1>{{monitor_output.text}}</h1>
+    {% endif %}
+</div>
+
+{% endblock %}

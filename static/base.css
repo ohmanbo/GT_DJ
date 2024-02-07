@@ -1,0 +1,41 @@
+.atlasgrid_html {
+    background-color: rgb(40, 40, 40);
+}
+
+.atlasgrid_header
+{
+    background-color: rgb(40, 40, 40);
+    color: #ddd;
+    text-align:center; 
+    margin:2rem 0;
+}
+.atlasgrid_header_title {
+    font-family: 'Sixtyfour', sans-serif;
+}
+
+.atlasgrid_body {
+    background-color: rgb(40, 40, 40);
+    color:#ddd;
+}
+
+.atlasgrid_monitor {
+    background-color: rgb(20, 20, 20);
+    color: #ddd;
+    border-radius: 0.3rem; 
+    padding: 1.5rem;
+    margin: 2rem;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+.atlasgrid_footer {
+    background-color: rgb(40, 40, 40);
+    color: #ddd;
+    text-align:center; 
+    margin-top:2rem;
+}
+.atlasgrid_footer_buttons {
+    font-size: 1rem;
+}
