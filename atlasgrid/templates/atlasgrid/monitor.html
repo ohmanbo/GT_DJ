@@ -17,8 +17,9 @@
     </form>
 
     {% if monitor_output %}
-
-    <h1>{{monitor_output.text}}</h1>
+        {% for item in monitor_output %}
+        <h1>{{item.text}}</h1>
+        {% endfor %}
     {% endif %}
 </div>
 

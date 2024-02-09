@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+/media/
+/venv/
+/env/
+/bin/
+/include/
+/lib/
+/lib64/
+.vscode/
+.idea/
+.DS_Store
+*.swp
+.env
