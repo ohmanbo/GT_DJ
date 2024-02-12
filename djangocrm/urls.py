@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from atlasgrid.views import view
 
 
@@ -22,6 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('atlasgrid/hello_world/',),
     
-    path('atlasgrid/monitor/', view, name='monitor')
-    #path('', include(('atlasgrid.urls'), namespace='atlasgrid') ),
+    
+    path('atlasgrid/', include(('atlasgrid.urls'), namespace='atlasgrid') ),
+    path('api-auth/', include('rest_framework.urls'))
+    
 ]
