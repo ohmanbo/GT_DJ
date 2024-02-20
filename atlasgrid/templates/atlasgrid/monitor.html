@@ -11,16 +11,17 @@
     <form id="monitorForm" action="/atlasgrid/monitor/" method="post">
         {% csrf_token %}
         <div>
-            <input id="monitorInput" type="text" name="monitor_input"/>
+            <input id="monitorInput" type="text" name="monitor_input" maxlength="200" />
         </div>
         <input type="submit" class="btn btn-primary" value="POST">
     </form>
-
-    {% if monitor_output %}
-        {% for item in monitor_output %}
-        <h1>{{item.text}}</h1>
-        {% endfor %}
-    {% endif %}
+    <div class="monitor_output_container" style="text-align:left">
+        {% if monitor_output %}
+            {% for item in monitor_output %}
+                {{item.text}} <br>
+            {% endfor %}
+        {% endif %}
+    </div>
 </div>
 
 <script>
@@ -40,17 +41,26 @@
 
             $.ajax({
                 type: $(this).attr('method'), // "POST"
-                url: $(this).attr('action'), // "/atlasgrid/monitor/"
+                url: $(this).attr('action'),
                 data: formData,
-                success: function(data) {
-                    // 여기에 성공 시 실행할 코드를 작성
-                    // 예: 제출된 데이터를 페이지에 추가
-                    console.log("success");
-                    console.log(data);
-                    $('#monitorInput').focus(); // 성공 후 입력 필드에 포커스를 다시 맞춥니다.
+                success: function(response) {
+                    // 서버로부터 반환된 데이터를 파싱
+                    //console.log(response); // 전체 응답 로깅
+                    //console.log(response.data); // 'data' 필드의 내용 로깅
+                    var items = JSON.parse(response.data);
+                    
+                    // 목록을 비우고 새로운 데이터로 채움
+                    var list = document.querySelector('.monitor_output_container');
+                    list.innerHTML = ''; // 기존 목록 비우기
+                    items.forEach(function(item) {
+                        var text = item.fields.text
+                        list.innerHTML += text + '<br>'; // 새로운 항목 추가
+                    });
+                    $('#monitorInput').focus().val(''); // 입력 필드에 포커스를 다시 맞춥니다.
+                    // 입력 필드의 텍스트 길이를 2000자로 제한합니다.
+                    $('#monitorInput').attr('maxlength', '2000');
                 },
                 error: function(xhr, status, error) {
-                    console.log("errpr")
                     console.error(error); // 에러 로깅
                 }
             });

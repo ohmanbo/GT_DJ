@@ -42,6 +42,10 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',  # 리액트 앱의 URL
+]
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -72,7 +76,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'atlasgrid',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -83,6 +88,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',  # `CorsMiddleware` 다음에 위치해야 합니다.
 ]
 
 ROOT_URLCONF = 'djangocrm.urls'

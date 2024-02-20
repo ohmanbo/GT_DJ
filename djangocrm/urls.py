@@ -20,10 +20,6 @@ from atlasgrid.views import view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('atlasgrid/hello_world/',),
-    
-    
-    path('atlasgrid/', include(('atlasgrid.urls'), namespace='atlasgrid') ),
+    path('atlasgrid/', include('atlasgrid.urls') ),
     path('api-auth/', include('rest_framework.urls'))
-    
 ]
