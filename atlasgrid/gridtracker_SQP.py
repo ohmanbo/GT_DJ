@@ -1,3 +1,7 @@
+# SQP = Steam Query Protocol
+# https://developer.valvesoftware.com/wiki/Master_Server_Query_Protocol
+# https://developer.valvesoftware.com/wiki/Server_queries
+
 import socket
 
 # 셀 정보를 저장할 빈 리스트 생성
