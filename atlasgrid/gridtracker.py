@@ -3,6 +3,7 @@ import json
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -22,7 +23,7 @@ def fetch_data(driver):
     return data 
 
 def start_gridtracker():
-    
+
     # Chrome 옵션 설정
     chrome_options = Options()
     chrome_options.add_argument("--headless")  # Headless 모드 활성화
@@ -30,6 +31,8 @@ def start_gridtracker():
     chrome_options.add_argument("--no-sandbox")  # Sandbox 프로세스 비활성화 (리눅스 시스템에서 필요)
     chrome_options.add_argument("--disable-dev-shm-usage")  # /dev/shm 파티션 사용 비활성화
     
+
+    # WebDriver 객체 생성 시 경로 명시
     driver = webdriver.Chrome(options=chrome_options)
     
     def cleanup_driver():

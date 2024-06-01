@@ -26,7 +26,7 @@ def view(request):
 
     if request.method == 'POST':
         
-        monitor_input_text = request.POST.get('monitor_input')
+        monitor_input_text = request.POST.get('monito`r_input')
         if monitor_input_text:
             new_hello_world = HelloWorld(text=monitor_input_text)
             new_hello_world.save()     
